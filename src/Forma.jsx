@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Forma({ query, onQueryChange }) {
+function Forma({ onSearch }) {
+  const [name, setName] = useState("");
+
   function handleSubmit(e) {
     e.preventDefault();
+    onSearch(name);
+    setName("");
   }
 
   return (
@@ -12,9 +16,9 @@ function Forma({ query, onQueryChange }) {
         <input
           type="text"
           placeholder="e.g.facebook"
-          value={query}
+          value={name}
           onChange={(e) => {
-            onQueryChange(e.target.value);
+            setName(e.target.value);
           }}
         />
         <button type="submit">G.O.</button>

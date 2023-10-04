@@ -1,24 +1,21 @@
 import React from "react";
 
-function DataList(data, loading) {
-  if (loading) {
-    return <p>Učitavanje...</p>;
-  }
-
+function DataList({ userData }) {
   return (
     <div>
-      <h2>Rezultati pretrage</h2>
-      <ul>
-        {data.map((item) => (
-          <li key={item.id}>
-            {item.name}
-            {item.avatar_url}
-            {item.location}
-            {item.bio}
-            console.log(item)
-          </li>
-        ))}
-      </ul>
+      {
+        <ul>
+          {userData && (
+            <div>
+              <h2>Podaci o GitHub korisniku:</h2>
+              <p>Ime: {userData.name}</p>
+              <p>Avatar_url: {userData.avatar_url}</p>
+              <p>Lokacija: {userData.location}</p>
+              <p>Biografija: {userData.bio}</p>
+            </div>
+          )}
+        </ul>
+      }
     </div>
   );
 }
